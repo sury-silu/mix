@@ -1,0 +1,430 @@
+<form id="calculator">
+
+<!-- Start of ADMIN defined fields -->
+
+<input type="hidden" id="hourly_rate" name="hourly_rate" value="20">
+<input type="hidden" id="base_fee" name="base_fee" value="100">
+<input type="hidden" id="drawing_sheet_fee" name="drawing_sheet_fee" value="5">
+<input type="hidden" id="proofreading_fees_total" name="proofreading_fees_total" value="20">
+<input type="hidden" id="dependent_claim_fee" name="dependent_claim_fee" value="20">
+<input type="hidden" id="independent_claim_fee" name="independent_claim_fee" value="20">
+<input type="hidden" id="small_utility_filing_fee" name="small_utility_filing_fee" value="10">
+<input type="hidden" id="large_utility_filing_fee" name="large_utility_filing_fee" value="15">
+<input type="hidden" id="small_design_filing_fee" name="small_design_filing_fee" value="10">
+<input type="hidden" id="large_design_filing_fee" name="large_design_filing_fee" value="12">
+<input type="hidden" id="small_prov_filing_fee" name="small_prov_filing_fee" value="10">
+<input type="hidden" id="large_prov_filing_fee" name="large_prov_filing_fee" value="12">
+<input type="hidden" id="small_RCE_fee" name="small_RCE_fee" value="11">
+<input type="hidden" id="large_RCE_fee" name="large_RCE_fee" value="12">
+<input type="hidden" id="small_utility_issue_fee" name="small_utility_issue_fee" value="11">
+<input type="hidden" id="large_utility_issue_fee" name="large_utility_issue_fee" value="12">
+<input type="hidden" id="small_design_issue_fee" name="small_design_issue_fee" value="11">
+<input type="hidden" id="large_design_issue_fee" name="large_design_issue_fee" value="12">
+<input type="hidden" id="small_maint_fee_total" name="small_maint_fee_total" value="11">
+<input type="hidden" id="large_maint_fee_total" name="large_maint_fee_total" value="12">
+
+<!-- End of ADMIN defined fields -->
+
+<!-- Start of USER defined fields -->
+
+<h3>Patent Cost Estimate Calculator</h3>
+
+
+<p>This calculator provides three sets of estimate ranges (low and high). All of the estimates include attorney time and current United States Patent Office (PTO) Fees (although most PTO fees will increase by the time they come due for your patent). The first estimate range is for filing a patent application. The second estimate range is for the total cost associated with a patent (including the filing costs, responding to communications from the PTO (Office actions), issue fees, and maintenance fees). The third estimate range is for the total cost associated with a continuation (including the filing costs, responding to communications from the PTO (Office actions), issue fees, and maintenance fees). </p>
+
+<p>Please note that this calculator is meant to provide estimates, not exact figures. As there are many variables pertaining to the process of obtaining a patent, these figures may differ from those you actually experience. Further, this calculator does not calculate costs associated with many aspects of the patent process including, but not limited to, searching, foreign filing, or litigation. For more information on these additional costs and fees, please see www.oregonpatent.com/fees.</p>
+
+
+ <h6>Entity Size:</h6>
+<select id="entity_size" name="entity_size">
+  <option value="large">Large</option>
+  <option value="small">Small</option>
+</select> 
+
+<p>A small entity has less than 500 employees. To claim small entity status, an entity must not have assigned, granted, conveyed, or licensed any rights in the invention to any entity that has more than 500 employees (and must not be under any obligation to do so).</p>
+
+<h6>Type of Application to be Filed:</h6>
+<select id="appl_type" name="appl_type">
+  <option value="Utility">Utility</option>
+  <option value="Design">Design</option>
+  <option value="Provisional">Provisional</option>
+</select> 
+
+<h6>Technology:</h6>
+<select id="technology" name="technology">
+  <option value="Mechanical">Mechanical</option>
+  <option value="Electrical">Electrical</option>
+  <option value="Software">Software</option>
+  <option value="Business Method">Business Method</option>
+  <option value="Other">Other</option>
+</select> 
+
+<h6>Number of Embodiments:</h6>
+<input type="text" id="no_of_embodiments" value="">
+
+<p>Small differences (e.g. color, size, shape) are almost never separate embodiments. Generally different embodiments would require additional sets of claims. Note: If there are multiple embodiments, you may be subject to one or more restriction requirement.</p>
+
+<h6>Do you Anticipate a “Restriction Requirement”?</h6>
+<select id="restriction_requirement">
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+<p>The patent laws only allow one “invention” for each patent. The Examiner may find that you have multiple inventions and issue a restriction requirement that would require a response. Note: If there are multiple embodiments, you should anticipate a restriction requirement. </p>
+
+<h6>Number of Drawing Sheets Anticipated:</h6>
+<input type="text" id="no_of_sheets">
+
+<p>There is no way to determine this number. For most applications, there is at least one Office action. For some applications there are many. About every other Office action is “Final.” Final Office actions are not, in fact, final, but do require an additional fee. This calculator includes the cost of preparing a response and the appropriate fees. </p>
+
+<h6>Is the Application to be Assigned to Another Entity? (e.g. a corporation)</h6>
+<select id="assignments">
+  <option value="Yes">Yes</option>
+  <option value="No">No</option>
+</select>
+
+<h6>Number of Office Actions Anticipated: </h6>
+<input type="text" id="no_of_ofc_action">
+
+<p>There is no way to determine this number. For most applications, there is at least one Office action. For some applications there are many. About every other Office action is “Final.” Final Office actions are not, in fact, final, but do require an additional fee. This calculator includes the cost of preparing a response and the appropriate fees. </p>
+
+<h6>Submit to calculate an estimate: </h6>
+<a id="calculator_submit" href="#result">Submit</a>
+
+<div id="result">
+
+<p><span>Low estimate filing:</span><span id="low_est_filing" class="result"></span></p>
+
+<p><span>High estimate filing:</span><span id="high_est_filing" class="result"></span></p>
+
+<p>For utility applications, the difference between the high and the low filing estimates may be determined by factors such as the complexity of the invention. For design applications, the difference between the high and the low filing estimates may be determined by factors such the out of pocket costs (e.g. drawing fees). For provisional applications, the high filing estimate includes a limited time for reviewing the application. These estimates also include basic PTO fees. This estimate range is for reference purposes only and must be confirmed to be valid. Please contact me and we can discuss your particular situation.</p>
+
+<p><span>Low estimate total (including filing):</span><span id="low_est_total" class="result"></span></p>
+
+<p><span>High estimate total (including filing):</span><span id="high_est_total" class="result"></span></p>
+
+<p>The “total” estimates are for the total costs associated with a single invention’s filing (see above), prosecution (the back and forth process with the PTO), issuance, and maintenance fees. Please note that there is no way to calculate an exact estimate and this range should not be relied upon. For example, the maintenance fees included in calculating the total estimates are based on the current maintenance fees. Fees, however, tend to increase annually. This means that if the fourth maintenance fee is $4000 today, but $6000 in twelve years when you pay the fee, the above estimates will be too low by $2000. This estimate range is for reference purposes only and cannot be confirmed. Please contact me and we can discuss your particular situation.</p>
+
+<p><span>Low estimate total per continuation:</span><span id="low_est_per_cont" class="result"></span></p>
+
+<p><span>High estimate total per continuation:</span><span id="high_est_per_cont" class="result"></span></p>
+
+<p>Many inventors pursue multiple applications for the same original filing. These applications are called “continuations.” Continuations (or divisionals) may be, for example, the applications that are filed to pursue embodiments that are “restricted” out of the original application. Many of the same fees for a regular application apply for a continuation application, but the basic application does not have to be rewritten. The “total continuation” range includes the total costs associated with a each additional invention’s filing, prosecution (the back and forth process with the PTO), issuance, and maintenance fees. If there is a restriction requirement, it is highly likely that you will want to file at least one continuation application. Also, strategically, filing a continuation can be highly desirable. This estimate range is for reference purposes only and cannot be confirmed. Please contact me and we can discuss your particular situation.</p>
+
+</div>
+
+</form>
+
+<style type="text/css">
+#calculator br{display:none;}
+#calculator h6 {
+    font-weight: normal;
+}
+#calculator_submit{
+    background-color: #75100f;
+    color: #fff;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-size: 18px;
+    border-radius: 30px;
+}
+#calculator_submit:hover{
+   background-color: #813130;
+}
+span.result{
+  border-bottom: 1px solid;
+  margin-left: 10px;
+  min-width: 70px;
+  display: inline-block;
+}
+#result{
+    margin-top: 50px;
+}
+</style>
+
+<script type="text/javascript">
+
+jQuery(document).ready(function() {
+
+var hourly_rate; var base_fee; var drawing_sheet_fee; var proofreading_fees_total; var dependent_claim_fee; var independent_claim_fee; var small_utility_filing_fee; var large_utility_filing_fee; var small_design_filing_fee; var large_design_filing_fee; var small_prov_filing_fee; var large_prov_filing_fee; var small_RCE_fee; var large_RCE_fee; var small_utility_issue_fee; var large_utility_issue_fee; var small_design_issue_fee; var large_design_issue_fee; var small_maint_fee_total; var large_maint_fee_total;
+
+var extra_fee_low; var extra_fee_high;
+
+var entity_size; var appl_type; var technology; var no_of_embodiments; var restriction_requirement;  var no_of_sheets; var assignments; var no_of_ofc_action; 
+
+var low_est_filing; var high_est_filing; var low_est_total; high_est_total; low_est_per_cont; high_est_per_cont;
+
+    jQuery("#calculator_submit").click(function(){
+
+         hourly_rate = parseInt(jQuery('#hourly_rate').val());
+         base_fee = parseInt(jQuery('#base_fee').val());
+         drawing_sheet_fee = parseInt(jQuery('#drawing_sheet_fee').val());
+         proofreading_fees_total = parseInt(jQuery('#proofreading_fees_total').val());
+         dependent_claim_fee = parseInt(jQuery('#dependent_claim_fee').val());
+         independent_claim_fee = parseInt(jQuery('#independent_claim_fee').val());
+         small_utility_filing_fee = parseInt(jQuery('#small_utility_filing_fee').val());
+         large_utility_filing_fee = parseInt(jQuery('#large_utility_filing_fee').val());
+         small_design_filing_fee = parseInt(jQuery('#small_design_filing_fee').val());
+         large_design_filing_fee = parseInt(jQuery('#large_design_filing_fee').val());
+         small_prov_filing_fee = parseInt(jQuery('#small_prov_filing_fee').val());
+         large_prov_filing_fee = parseInt(jQuery('#large_prov_filing_fee').val());
+         small_RCE_fee = parseInt(jQuery('#small_RCE_fee').val());
+         large_RCE_fee = parseInt(jQuery('#large_RCE_fee').val());
+         small_utility_issue_fee = parseInt(jQuery('#small_utility_issue_fee').val());
+         large_utility_issue_fee = parseInt(jQuery('#large_utility_issue_fee').val());
+         small_design_issue_fee = parseInt(jQuery('#small_design_issue_fee').val());
+         large_design_issue_fee = parseInt(jQuery('#large_design_issue_fee').val());
+         small_maint_fee_total = parseInt(jQuery('#small_maint_fee_total').val());
+         large_maint_fee_total = parseInt(jQuery('#large_maint_fee_total').val());
+
+         entity_size = jQuery('#entity_size').val();
+         appl_type = jQuery('#appl_type').val();
+         technology = jQuery('#technology').val();
+         no_of_embodiments = parseInt(jQuery('#no_of_embodiments').val());
+         restriction_requirement = jQuery('#restriction_requirement').val();
+         no_of_sheets = parseInt(jQuery('#no_of_sheets').val());
+         assignments = jQuery('#assignments').val();
+         no_of_ofc_action = parseInt(jQuery('#no_of_ofc_action').val());
+
+extra_fee_low = drawing_sheet_fee  * no_of_sheets;
+extra_fee_high = drawing_sheet_fee  * no_of_sheets;
+
+if( assignments == 'yes' ) {
+	extra_fee_low += 100;
+	extra_fee_high += 100;
+}
+
+if( restriction_requirement == 'yes' ) {
+	extra_fee_low +=  ( 2 * hourly_rate  );
+	extra_fee_high +=  ( 4 * hourly_rate  );
+}
+ 
+
+if( entity_size == 'small' ) {
+
+       if( appl_type  == 'Utility' ) {
+	
+		if( technology == 'Mechanical' ) {
+			small_utility_mechanical();
+		}
+		if( technology == 'Electrical' || technology == 'Software' || technology == 'Business Method' ) {
+			small_utility_esbm();
+		}
+		else if( technology == 'Other' ) {
+			small_utility_other();
+		}
+	
+	}
+	else if ( appl_type  == 'Design' ) {
+		small_design();
+	}
+	else if ( appl_type  == 'Provisional' ) {
+		small_provisional();
+	}
+}
+
+else if( entity_size == 'large' ) {
+
+	if( appl_type  == 'Utility' ) {
+	
+		if( technology == 'Mechanical' ) {
+			large_utility_mechanical();
+		}
+		if( technology == 'Electrical' || technology == 'Software' || technology == 'Business Method' ) {
+			large_utility_esbm();
+		}
+		else if( technology == 'Other' ) {
+			large_utility_other();
+		}
+	
+	}
+	else if ( appl_type  == 'Design' ) {
+		large_design();
+	}
+	else if ( appl_type  == 'Provisional' ) {
+		large_provisional();
+	}
+}
+
+
+jQuery('#low_est_filing').html(low_est_filing);
+jQuery('#high_est_filing').html(high_est_filing);
+jQuery('#low_est_total').html(low_est_total);
+jQuery('#high_est_total').html(high_est_total);
+jQuery('#low_est_per_cont').html(low_est_per_cont);
+jQuery('#high_est_per_cont').html(high_est_per_cont);
+
+   });
+
+
+
+function small_utility_mechanical() {
+
+	low_est_filing = base_fee  + small_utility_filing_fee  + ( hourly_rate * 15) + extra_fee_low + ( ( no_of_embodiments - 1) * ( independent_claim_fee + ( 5 * dependent_claim_fee ) + ( hourly_rate * 4 ) ) );
+
+	high_est_filing = base_fee + small_utility_filing_fee + ( hourly_rate * 25) + extra_fee_high + ( ( no_of_embodiments - 1) * ( independent_claim_fee + ( 10 * dependent_claim_fee ) + ( hourly_rate * 8 ) ) );
+
+	low_est_total = low_est_filing + ( ( hourly_rate * 8) * no_of_ofc_action  ) + ( small_RCE_fee * ( no_of_ofc_action / 2 ) ) + ( small_utility_issue_fee  + ( hourly_rate * 2 ) ) + small_maint_fee_total;
+
+	high_est_total = high_est_filing + ( ( hourly_rate * 12) * no_of_ofc_action ) + ( small_RCE_fee * ( no_of_ofc_action / 2 ) ) + ( small_utility_issue_fee + ( hourly_rate * 3) ) + proofreading_fees_total  + small_maint_fee_total;
+
+	low_est_per_cont = base_fee + small_utility_filing_fee + (( hourly_rate * 8) * no_of_ofc_action) + ( small_RCE_fee * ( no_of_ofc_action / 2  )) + (small_utility_issue_fee + (hourly_rate * 2)) + small_maint_fee_total;
+
+	high_est_per_cont= base_fee + small_utility_filing_fee + ((hourly_rate * 12) * no_of_ofc_action) +  ( small_RCE_fee * ( no_of_ofc_action / 2 )) + (small_utility_issue_fee + ( hourly_rate * 3)) + proofreading_fees_total + small_maint_fee_total;
+}
+
+function small_utility_esbm() {
+
+	low_est_filing = base_fee + small_utility_filing_fee + (hourly_rate * 32) + extra_fee_low + ((no_of_embodiments - 1) * (independent_claim_fee + (5 * dependent_claim_fee) + (hourly_rate * 4)));
+
+	high_est_filing = base_fee + small_utility_filing_fee + (hourly_rate * 40) + extra_fee_high + ((no_of_embodiments - 1) * ( independent_claim_fee + (10 * dependent_claim_fee) + (hourly_rate * 8)));
+
+	low_est_total = low_est_filing + ((hourly_rate * 12) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2  ) ) + (small_utility_issue_fee + (hourly_rate * 2)) + small_maint_fee_total;
+
+	high_est_total = high_est_filing + ((hourly_rate * 16) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2  ) ) + (small_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + small_maint_fee_total;
+
+	low_est_per_cont = base_fee + small_utility_filing_fee + ((hourly_rate * 12) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2 )) + (small_utility_issue_fee + (hourly_rate * 2)) + small_maint_fee_total;
+
+ high_est_per_cont = base_fee + small_utility_filing_fee + ((hourly_rate * 16) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2 )) + (small_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + small_maint_fee_total;
+}
+
+function small_utility_other() {
+	
+	low_est_filing = base_fee + small_utility_filing_fee + (hourly_rate * 15) + extra_fee_low
++ ((no_of_embodiments - 1) * (independent_claim_fee + (5 * dependent_claim_fee) + (hourly_rate * 4)));
+
+	high_est_filing = base_fee + small_utility_filing_fee + (hourly_rate * 40) + extra_fee_high + ((no_of_embodiments - 1) * (independent_claim_fee + (10 * dependent_claim_fee) + (hourly_rate * 8)));
+
+	low_est_total = low_est_filing + ((hourly_rate * 8) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2  ) ) + (small_utility_issue_fee + (hourly_rate * 2)) + small_maint_fee_total;
+
+	high_est_total = high_est_filing + ((hourly_rate * 16) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2  ) ) + (small_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + small_maint_fee_total;
+
+	low_est_per_cont = base_fee + small_utility_filing_fee + ((hourly_rate * 8) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2 )) + (small_utility_issue_fee + (hourly_rate * 2)) + small_maint_fee_total;
+
+	high_est_per_cont = base_fee + small_utility_filing_fee + ((hourly_rate * 16) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2 )) + (small_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + small_maint_fee_total;
+}
+
+function small_design() {
+
+	low_est_filing = base_fee + small_design_filing_fee + (hourly_rate * 1) + extra_fee_low;
+
+	high_est_filing = base_fee + small_design_filing_fee + (hourly_rate * 3) + extra_fee_high;
+
+	low_est_total = low_est_filing + ((hourly_rate * 4) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2  ) ) + (small_design_issue_fee + (hourly_rate * 2));
+
+	high_est_total = high_est_filing + ((hourly_rate * 8) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2  ) ) + (small_design_issue_fee + (hourly_rate * 3)) + proofreading_fees_total;
+
+	low_est_per_cont = base_fee + small_design_filing_fee + ((hourly_rate * 4) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2 )) + (small_design_issue_fee + (hourly_rate * 2));
+
+	high_est_per_cont = base_fee + small_design_filing_fee + ((hourly_rate * 8) * no_of_ofc_action) + (small_RCE_fee * (no_of_ofc_action / 2 )) + (small_design_issue_fee + (hourly_rate * 3)) + proofreading_fees_total;
+}
+
+function small_provisional() {
+
+
+	low_est_filing = base_fee + small_prov_filing_fee + (hourly_rate * 1) + extra_fee_low;
+	high_est_filing = base_fee + small_prov_filing_fee + (hourly_rate * 16) + extra_fee_high;
+	low_est_total = 'Not Applicable';
+	high_est_total = 'Not Applicable';
+	low_est_per_cont = 'Not Applicable';
+	high_est_per_cont = 'Not Applicable';
+}
+
+function large_utility_mechanical() {
+
+
+low_est_filing = base_fee + large_utility_filing_fee + (hourly_rate * 15) + extra_fee_low 
++ ((no_of_embodiments - 1) * (independent_claim_fee + (5 * dependent_claim_fee) + (hourly_rate * 4)));
+
+high_est_filing = base_fee + large_utility_filing_fee + (hourly_rate * 25) + extra_fee_high
++ ((no_of_embodiments - 1) * (independent_claim_fee + (10 * dependent_claim_fee) + (hourly_rate * 8)));
+
+low_est_total = low_est_filing + ((hourly_rate * 8) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_utility_issue_fee + (hourly_rate * 2)) + large_maint_fee_total;
+
+high_est_total = high_est_filing + ((hourly_rate * 12) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + large_maint_fee_total;
+
+low_est_per_cont = base_fee + large_utility_filing_fee + ((hourly_rate * 8) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 
+ )) + (large_utility_issue_fee + (hourly_rate * 2)) + large_maint_fee_total;
+
+high_est_per_cont = base_fee + large_utility_filing_fee + ((hourly_rate * 12) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 )) + (large_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + large_maint_fee_total;
+}
+
+function large_utility_esbm() {
+
+low_est_filing = base_fee + large_utility_filing_fee + (hourly_rate * 32) + extra_fee_low
++ ((no_of_embodiments - 1) * (independent_claim_fee + (5 * dependent_claim_fee) + (hourly_rate * 4)));
+
+high_est_filing = base_fee + large_utility_filing_fee + (hourly_rate * 40) + extra_fee_high
++ ((no_of_embodiments - 1) * (independent_claim_fee + (10 * dependent_claim_fee) + (hourly_rate * 8)));
+
+low_est_total = low_est_filing + ((hourly_rate * 12) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_utility_issue_fee + (hourly_rate * 2)) + large_maint_fee_total;
+
+high_est_total = high_est_filing + ((hourly_rate * 16) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + large_maint_fee_total;
+
+low_est_per_cont = base_fee + large_utility_filing_fee + ((hourly_rate * 12) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 
+ )) + (large_utility_issue_fee + (hourly_rate * 2)) + large_maint_fee_total;
+
+high_est_per_cont = base_fee + large_utility_filing_fee + ((hourly_rate * 16) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 )) + (large_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + large_maint_fee_total ;
+}
+
+function large_utility_other() {
+
+low_est_filing = base_fee + large_utility_filing_fee + (hourly_rate * 15) + extra_fee_low
++ ((no_of_embodiments - 1) * (independent_claim_fee + (5 * dependent_claim_fee) + (hourly_rate * 4)));
+
+high_est_filing = base_fee + large_utility_filing_fee + (hourly_rate * 40) + extra_fee_high
++ ((no_of_embodiments - 1) * (independent_claim_fee + (10 * dependent_claim_fee) + (hourly_rate * 8)));
+
+low_est_total = low_est_filing + ((hourly_rate * 8) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_utility_issue_fee + (hourly_rate * 2)) + large_maint_fee_total;
+
+high_est_total = high_est_filing + ((hourly_rate * 16) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + large_maint_fee_total;
+
+low_est_per_cont = base_fee + large_utility_filing_fee + ((hourly_rate * 8) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 
+ )) + (large_utility_issue_fee + (hourly_rate * 2)) + large_maint_fee_total;
+
+high_est_per_cont = base_fee + large_utility_filing_fee + ((hourly_rate * 16) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 )) + (large_utility_issue_fee + (hourly_rate * 3)) + proofreading_fees_total + large_maint_fee_total;
+}
+
+function large_design() {
+
+low_est_filing = base_fee + large_design_filing_fee + (hourly_rate * 1) + extra_fee_low;
+
+high_est_filing = base_fee + large_design_filing_fee + (hourly_rate * 3) + extra_fee_high;
+
+low_est_total = low_est_filing + ((hourly_rate * 4) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_design_issue_fee + (hourly_rate * 2));
+
+high_est_total = high_est_filing + ((hourly_rate * 8) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2  ) )
++ (large_design_issue_fee + (hourly_rate * 3)) + proofreading_fees_total;
+
+low_est_per_cont = base_fee + large_design_filing_fee + ((hourly_rate * 4) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 
+ )) + (large_design_issue_fee + (hourly_rate * 2));
+
+high_est_per_cont = base_fee + large_design_filing_fee + ((hourly_rate * 8) * no_of_ofc_action) + (large_RCE_fee * (no_of_ofc_action / 2 
+ )) + (large_design_issue_fee + (hourly_rate * 3)) + proofreading_fees_total;
+}
+
+function large_provisional() {
+
+low_est_filing = base_fee + large_prov_filing_fee + (hourly_rate * 1) + extra_fee_low;
+
+high_est_filing = base_fee + large_prov_filing_fee + (hourly_rate * 16) + extra_fee_high;
+
+low_est_total = 'Not Applicable'; 
+
+high_est_total = 'Not Applicable';
+
+low_est_per_cont = 'Not Applicable';
+
+high_est_per_cont = 'Not Applicable'; 
+}
+
+
+});
+</script>
